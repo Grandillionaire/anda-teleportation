@@ -46,8 +46,10 @@ const Hero = () => {
       }
     }
 
-    // Initialize particles
-    for (let i = 0; i < 100; i++) {
+    // Initialize particles (fewer on mobile for better performance)
+    const isMobile = window.innerWidth < 768
+    const particleCount = isMobile ? 40 : 100
+    for (let i = 0; i < particleCount; i++) {
       particles.push(new Particle())
     }
 

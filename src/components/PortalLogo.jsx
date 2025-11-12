@@ -1,14 +1,65 @@
-import React from 'react'
-import { motion } from 'framer-motion'
+import React, { useState } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
 
 const PortalLogo = () => {
+  const [clickCount, setClickCount] = useState(0)
+  const [showSecret, setShowSecret] = useState(false)
+
+  const handleLogoClick = () => {
+    const newCount = clickCount + 1
+    setClickCount(newCount)
+
+    if (newCount === 3) {
+      setShowSecret(true)
+      // Change document title
+      document.title = '💜 For Anda Coste - I Love You 💜'
+      setTimeout(() => {
+        setShowSecret(false)
+        setClickCount(0)
+        document.title = 'Anda Industries | Quantum Teleportation'
+      }, 8000)
+    }
+  }
+
   return (
-    <div className="flex flex-col items-center gap-6">
+    <div className="flex flex-col items-center gap-6 relative">
+      {/* Secret love message */}
+      <AnimatePresence>
+        {showSecret && (
+          <motion.div
+            initial={{ opacity: 0, scale: 0.5, y: 20 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.5, y: -20 }}
+            className="absolute -top-28 md:-top-32 left-1/2 transform -translate-x-1/2 z-50 p-6 md:p-8 rounded-3xl bg-gradient-to-br from-pink-600/95 to-purple-600/95 border-2 border-pink-400 backdrop-blur-lg shadow-2xl shadow-pink-500/50 text-center min-w-[280px] md:min-w-[350px] max-w-[90vw]"
+          >
+            <motion.div
+              animate={{ rotate: [0, 10, -10, 10, 0] }}
+              transition={{ duration: 0.5, repeat: 3 }}
+              className="text-5xl md:text-6xl mb-3 md:mb-4"
+            >
+              💖
+            </motion.div>
+            <h3 className="text-xl md:text-2xl font-bold text-white mb-2 md:mb-3">For Anda Coste</h3>
+            <p className="text-base md:text-lg text-pink-100 mb-2">You are my moonlight 🌙</p>
+            <p className="text-base md:text-lg text-pink-100 mb-2">You are worth every minute I spent coding this ✨</p>
+            <p className="text-xl md:text-2xl font-bold text-white mt-3 md:mt-4">I love you ❤️</p>
+            <motion.div
+              animate={{ scale: [1, 1.2, 1] }}
+              transition={{ duration: 1.5, repeat: Infinity }}
+              className="text-4xl mt-4"
+            >
+              💜
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
       <svg
         width="200"
         height="200"
         viewBox="0 0 200 200"
-        className="drop-shadow-2xl"
+        className="drop-shadow-2xl cursor-pointer interactive transition-transform hover:scale-105"
+        onClick={handleLogoClick}
       >
         {/* Outer ring */}
         <motion.circle

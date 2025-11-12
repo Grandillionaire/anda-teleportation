@@ -127,13 +127,17 @@ const Footer = () => {
             </div>
           </div>
 
-          <div className="flex items-center gap-2 text-sm text-gray-500">
+          <div className="flex items-center gap-2 text-sm text-gray-500 group relative">
             <span>Powered by quantum entanglement</span>
             <motion.div
               animate={{ rotate: 360 }}
               transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
               className="w-4 h-4 border-2 border-purple-500 border-t-transparent rounded-full"
             />
+            {/* Hidden love message */}
+            <div className="absolute -top-16 right-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none bg-gradient-to-r from-pink-600/90 to-purple-600/90 px-4 py-2 rounded-lg text-pink-100 text-xs whitespace-nowrap border border-pink-400/50">
+              ...and by love for Anda Coste 💜
+            </div>
           </div>
         </div>
       </div>

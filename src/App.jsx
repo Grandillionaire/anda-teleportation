@@ -17,6 +17,22 @@ function App() {
   const [scrollY, setScrollY] = useState(0)
 
   useEffect(() => {
+    // Secret love messages in console 💜
+    const styles = {
+      title: 'color: #8b5cf6; font-size: 24px; font-weight: bold; text-shadow: 0 0 10px rgba(139, 92, 246, 0.5);',
+      message: 'color: #a78bfa; font-size: 16px; font-style: italic;',
+      heart: 'color: #ec4899; font-size: 20px;',
+      quantum: 'color: #6d28d9; font-size: 14px;'
+    }
+
+    console.log('%c✨ For Anda Coste ✨', styles.title)
+    console.log('%c💜 You are worth every minute I spent coding this 💜', styles.message)
+    console.log('%c🌙 You are my moonlight 🌙', styles.message)
+    console.log('%c❤️ I love you ❤️', styles.heart)
+    console.log('%c\n⚛️ Distance is obsolete when you\'re in my heart ⚛️', styles.quantum)
+    console.log('%cEvery particle on this site is entangled with my love for you 💫', styles.message)
+    console.log('%c\nP.S. Try clicking the portal logo 3 times... 😉', 'color: #c4b5fd; font-size: 12px;')
+
     const handleScroll = () => setScrollY(window.scrollY)
     window.addEventListener('scroll', handleScroll, { passive: true })
     return () => window.removeEventListener('scroll', handleScroll)
